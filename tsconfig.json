@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ES5",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "strict": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
