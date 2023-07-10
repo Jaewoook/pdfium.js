@@ -13,7 +13,8 @@ jobs:
         with:
           cache: "yarn"
           node-version-file: ".tool-versions"
-      - run: yarn build --frozen-lockfile
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -22,4 +23,5 @@ jobs:
         with:
           cache: "yarn"
           node-version-file: ".tool-versions"
+      - run: yarn install --frozen-lockfile
       - run: yarn lint
