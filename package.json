@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "PDFium wrapper library for JavaScript",
   "main": "dist/index.js",
-  "repository": "git@github.com:Jaewoook/pdfium.js.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Jaewoook/pdfium.js.git"},
   "author": "Jaewook Ahn <dev.jaewook@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext ts,js",

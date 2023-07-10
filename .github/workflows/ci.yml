@@ -1,0 +1,25 @@
+name: "CI"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: "yarn"
+          node-version-file: ".tool-versions"
+      - run: yarn build --frozen-lockfile
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: "yarn"
+          node-version-file: ".tool-versions"
+      - run: yarn lint
