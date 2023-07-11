@@ -4,11 +4,11 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "target": "ES5",
+    "target": "ES2015",
     "module": "CommonJS",
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "dist"
+    "noEmit": true
   },
   "include": [
     "src/**/*"

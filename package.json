@@ -3,18 +3,21 @@
   "version": "1.0.0",
   "description": "PDFium wrapper library for JavaScript",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Jaewoook/pdfium.js.git"
   },
   "author": "Jaewook Ahn <dev.jaewook@gmail.com>",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsc",
-    "postbuild": "cp src/libs/pdfium.wasm dist/libs",
+    "type-check": "tsc",
+    "build": "rollup -c",
     "lint": "eslint . --ext ts,js",
     "commitlint": "commitlint --edit"
   },
@@ -24,11 +27,15 @@
     "@types/node": "^20.4.1",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
+    "esbuild": "^0.18.11",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "^8.0.3",
     "prettier": "2.8.8",
+    "rollup": "^3.26.2",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0",
     "typescript": "^5.1.6"
   }
 }
