@@ -60,7 +60,7 @@ const initPDFium = (options: LibraryInitOptions) => {
   });
 };
 
-const PDFium = (options: LibraryInitOptions) => {
+const PDFium = (options: LibraryInitOptions = {}) => {
   if (window.FPDF) {
     return Promise.resolve(window.FPDF);
   }
