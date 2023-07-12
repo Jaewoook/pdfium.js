@@ -60,7 +60,7 @@ import { PDFium } from "pdfium.js";
 PDFium().then((PDFiumModule) => {
   const bytes = 1024;
 
-// allocate 1024 bytes in memory
+  // allocate 1024 bytes in memory
   const memoryAddress = PDFiumModule.asm.malloc(bytes);
 
   // free memory
