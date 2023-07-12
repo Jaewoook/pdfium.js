@@ -13,6 +13,11 @@ const config = [
       {
         file: packageJson.main,
         format: "cjs",
+        exports: "named",
+      },
+      {
+        file: packageJson.exports["."].import,
+        format: "es",
       },
     ],
     plugins: [esbuild()],

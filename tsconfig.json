@@ -5,7 +5,7 @@
     "declaration": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "target": "ES2015",
-    "module": "CommonJS",
+    "module": "ESNext",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true
