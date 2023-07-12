@@ -14,7 +14,7 @@ jobs:
           cache: "yarn"
           node-version-file: ".tool-versions"
           registry-url: "https://registry.npmjs.org"
-      - run: yarn instsall --frozen-lockfile
+      - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn publish
         env:
