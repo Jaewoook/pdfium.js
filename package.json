@@ -1,7 +1,7 @@
 {
   "name": "pdfium.js",
-  "version": "0.1.0-rc.0",
-  "description": "PDFium wrapper library for JavaScript",
+  "version": "0.1.0-rc.1",
+  "description": "A PDFium wrapper library for JavaScript",
   "main": "./dist/cjs/index.js",
   "types": "./dist/esm/index.d.ts",
   "exports": {
@@ -11,6 +11,11 @@
       "require": "./dist/cjs/index.js"
     }
   },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Jaewoook/pdfium.js.git"
