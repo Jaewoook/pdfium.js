@@ -1,0 +1,21 @@
+name: "Publish Package"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: "yarn"
+          node-version-file: ".tool-versions"
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn instsall --frozen-lockfile
+      - run: yarn build
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
