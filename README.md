@@ -70,7 +70,7 @@ PDFium().then((PDFiumModule) => {
 
 ## API
 
-Supported PDFium API List ([source coee](./src/global.d.ts))
+Supported PDFium API List ([source code](./src/global.d.ts))
 
 | Name |
 |------|
