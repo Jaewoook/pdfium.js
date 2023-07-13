@@ -35,7 +35,7 @@ npm install --save pdfium.js
 
 ### WebAssembly Preparation
 
-**:warning: IMPORTANT :warning:** This is required step to use PDFium.js. Before using this library, Before using this library, make sure to copy the bundled `pdfium.wasm` file to your static assets directory.
+**:warning: IMPORTANT :warning:** This step is required to use this library. Make sure to copy the bundled `pdfium.wasm` file to your static assets directory before using it.
 
 ```bash
 cp ./node_modules/pdfium.js/dist/pdfium.wasm <YOUR_STATIC_ASSETS_DIRECTORY>
