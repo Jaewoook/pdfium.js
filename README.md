@@ -17,6 +17,10 @@ A PDFium wrapper library for browser-side JavaScript
 
 </div>
 
+## Introduction
+
+[PDFium](https://pdfium.googlesource.com/pdfium/+/master/README.md) is a high performance open source PDF library used in chromium. However, its implementation in C/C++ makes it challenging to use in web development. **PDFium.js** provides a pre-built WebAssembly version of the PDFium binary and offers an interface that allows it to be used in JavaScript. It will be helpful when developing PDF-related features.
+
 ## Getting Started
 
 ### Installation
@@ -76,43 +80,43 @@ PDFium().then((PDFiumModule) => {
 });
 ```
 
-## API
+## PDFium API
 
-Full PDFium API list [here](./src/global.d.ts).
-Full API Specification [here](https://pdfium.googlesource.com/pdfium/+/main/public/).
+This library doesn't provide full PDFium API yet. Check full version of defined PDFium API type list [here](./src/global.d.ts).
 
-| Name                        |
-| --------------------------- |
-| _FPDF_InitLibrary           |
-| _FPDF_InitLibraryWithConfig |
-| _FPDF_DestroyLibrary        |
-| _FPDF_GetLastError          |
-| _FPDF_LoadDocument          |
-| _FPDF_LoadMemDocument       |
-| _FPDF_CloseDocument         |
-| _FPDF_GetPageCount          |
-| _FPDF_LoadPage              |
-| _FPDF_GetPageWidth          |
-| _FPDF_GetPageHeight         |
-| _FPDF_GetPageWidthF         |
-| _FPDF_GetPageHeightF        |
-| _FPDF_GetPageSizeByIndex    |
-| _FPDF_ClosePage             |
-| _FPDFPage_CountObjects      |
-| _FPDFPage_GetObject         |
-| _FPDFPage_GenerateContent   |
-| _FPDFPageObj_Destroy        |
-| _FPDFText_LoadPage          |
-| _FPDFText_CountChars        |
-| _FPDFText_GetCharBox        |
-| _FPDFText_ClosePage         |
-| _FPDFBitmap_Create          |
-| _FPDFBitmap_CreateEx        |
-| _FPDFBitmap_FillRect        |
-| _FPDF_RenderPageBitmap      |
-| _FPDFBitmap_Destroy         |
-| _FPDF_DeviceToPage          |
-| _FPDF_PageToDevice          |
+You can also find original API specification [here](https://pdfium.googlesource.com/pdfium/+/main/public/).
+
+### Supported API List
+- _FPDF_InitLibrary
+- _FPDF_InitLibraryWithConfig
+- _FPDF_DestroyLibrary
+- _FPDF_GetLastError
+- _FPDF_LoadDocument
+- _FPDF_LoadMemDocument
+- _FPDF_CloseDocument
+- _FPDF_GetPageCount
+- _FPDF_LoadPage
+- _FPDF_GetPageWidth
+- _FPDF_GetPageHeight
+- _FPDF_GetPageWidthF
+- _FPDF_GetPageHeightF
+- _FPDF_GetPageSizeByIndex
+- _FPDF_ClosePage
+- _FPDFPage_CountObjects
+- _FPDFPage_GetObject
+- _FPDFPage_GenerateContent
+- _FPDFPageObj_Destroy
+- _FPDFText_LoadPage
+- _FPDFText_CountChars
+- _FPDFText_GetCharBox
+- _FPDFText_ClosePage
+- _FPDFBitmap_Create
+- _FPDFBitmap_CreateEx
+- _FPDFBitmap_FillRect
+- _FPDF_RenderPageBitmap
+- _FPDFBitmap_Destroy
+- _FPDF_DeviceToPage
+- _FPDF_PageToDevice
 
 
 ## Author
