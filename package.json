@@ -1,7 +1,7 @@
 {
   "name": "pdfium.js",
   "version": "0.1.0-rc.1",
-  "description": "A PDFium wrapper library for JavaScript",
+  "description": "A PDFium wrapper library for browser-side JavaScript",
   "main": "./dist/cjs/index.js",
   "types": "./dist/esm/index.d.ts",
   "exports": {
@@ -20,7 +20,21 @@
     "type": "git",
     "url": "https://github.com/Jaewoook/pdfium.js.git"
   },
-  "author": "Jaewook Ahn <dev.jaewook@gmail.com>",
+  "bugs": {
+    "email": "dev.jaewook@gmail.com",
+    "url": "https://github.com/Jaewoook/pdfium.js/issues"
+  },
+  "keywords": [
+    "pdfium",
+    "pdf",
+    "wrapper-library",
+    "webassembly"
+  ],
+  "author": {
+    "name" :"Jaewook Ahn",
+    "email": "dev.jaewook@gmail.com",
+    "url": "https://jaewook.me"
+  },
   "license": "MIT",
   "scripts": {
     "type-check": "tsc",
