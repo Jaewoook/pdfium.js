@@ -29,25 +29,33 @@ yarn add pdfium.js
 npm install --save pdfium.js
 ```
 
-### Copy pdfium.wasm file
+### WebAssembly Preparation
 
-| :warning: This is required step to use PDFium! Copy bundled pdfium.wasm file to your static assets directory
+**:warning: IMPORTANT :warning:** This is required step to use PDFium.js. Before using this library, Before using this library, make sure to copy the bundled `pdfium.wasm` file to your static assets directory.
 
 ```bash
 cp ./node_modules/pdfium.js/dist/pdfium.wasm <YOUR_STATIC_ASSETS_DIRECTORY>
 ```
 
-## Usage
+or you can manually download the pdfium.wasm file [here](https://github.com/Jaewoook/pdfium.js/raw/main/src/libs/pdfium.wasm).
 
-### Initialize the PDFium module
+## Usage
 
 ```ts
 import { PDFium } from "pdfium.js";
 
-// load or initialize PDFium
 PDFium({ wasmPath: "/" }).then((PDFiumModule) => {
-  // call PDFium InitLibrary function after module loaded
+  // library initialization
   PDFiumModule._FPDF_InitLibrary();
+
+  // memory allocation
+  const byteArray: Uint8Array = <FILE BINARY DATA>;
+  const fileSize = byteArray.length;
+  const binaryAddress = PDFiumModule.asm.malloc(fileSize);
+  PDFiumModule.HEAPU8.set(byteArray, binaryAddress);
+
+  // document loading
+  const documentAddress = PDFiumModule._FPDF_LoadMemDocument(binaryAddress, fileSize, "");
 });
 ```
 
@@ -70,41 +78,41 @@ PDFium().then((PDFiumModule) => {
 
 ## API
 
-Supported PDFium API List ([source code](./src/global.d.ts))
+Full PDFium API list [here](./src/global.d.ts).
+Full API Specification [here](https://pdfium.googlesource.com/pdfium/+/main/public/).
 
-| Name |
-|------|
-| _PDFium_Init |
-| _FPDF_InitLibrary |
+| Name                        |
+| --------------------------- |
+| _FPDF_InitLibrary           |
 | _FPDF_InitLibraryWithConfig |
-| _FPDF_DestroyLibrary |
-| _FPDF_GetLastError |
-| _FPDF_LoadDocument |
-| _FPDF_LoadMemDocument |
-| _FPDF_CloseDocument |
-| _FPDF_GetPageCount |
-| _FPDF_LoadPage |
-| _FPDF_GetPageWidth |
-| _FPDF_GetPageHeight |
-| _FPDF_GetPageWidthF |
-| _FPDF_GetPageHeightF |
-| _FPDF_GetPageSizeByIndex |
-| _FPDF_ClosePage |  
-| _FPDFPage_CountObjects |
-| _FPDFPage_GetObject |
-| _FPDFPage_GenerateContent |
-| _FPDFPageObj_Destroy |
-| _FPDFText_LoadPage |
-| _FPDFText_CountChars |
-| _FPDFText_GetCharBox |
-| _FPDFText_ClosePage |
-| _FPDFBitmap_Create |
-| _FPDFBitmap_CreateEx |
-| _FPDFBitmap_FillRect |
-| _FPDF_RenderPageBitmap |
-| _FPDFBitmap_Destroy |
-| _FPDF_DeviceToPage |
-| _FPDF_PageToDevice |
+| _FPDF_DestroyLibrary        |
+| _FPDF_GetLastError          |
+| _FPDF_LoadDocument          |
+| _FPDF_LoadMemDocument       |
+| _FPDF_CloseDocument         |
+| _FPDF_GetPageCount          |
+| _FPDF_LoadPage              |
+| _FPDF_GetPageWidth          |
+| _FPDF_GetPageHeight         |
+| _FPDF_GetPageWidthF         |
+| _FPDF_GetPageHeightF        |
+| _FPDF_GetPageSizeByIndex    |
+| _FPDF_ClosePage             |
+| _FPDFPage_CountObjects      |
+| _FPDFPage_GetObject         |
+| _FPDFPage_GenerateContent   |
+| _FPDFPageObj_Destroy        |
+| _FPDFText_LoadPage          |
+| _FPDFText_CountChars        |
+| _FPDFText_GetCharBox        |
+| _FPDFText_ClosePage         |
+| _FPDFBitmap_Create          |
+| _FPDFBitmap_CreateEx        |
+| _FPDFBitmap_FillRect        |
+| _FPDF_RenderPageBitmap      |
+| _FPDFBitmap_Destroy         |
+| _FPDF_DeviceToPage          |
+| _FPDF_PageToDevice          |
 
 
 ## Author
