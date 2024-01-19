@@ -1,12 +1,9 @@
 // @ts-check
-import copy from "rollup-plugin-copy";
 import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 import packageJson from "./package.json" assert { type: "json" };
 
-const wasmPath = "src/libs/pdfium.wasm";
 const entryFile = "src/index.ts";
-const distDir = "dist";
 
 /** @type {import("rollup").RollupOptions[]} */
 const config = [
@@ -23,7 +20,7 @@ const config = [
         format: "es",
       },
     ],
-    plugins: [esbuild(), copy({ targets: [{ src: wasmPath, dest: distDir }] })],
+    plugins: [esbuild()],
   },
   {
     input: entryFile,
