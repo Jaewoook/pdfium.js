@@ -1,3 +1,3 @@
-declare var PDFiumModule: (Module?: object) => Promise<FPDF>;
+declare var createPDFiumModule: (Module?: object) => Promise<FPDF>;
 
-export default PDFiumModule;
+export default createPDFiumModule;
