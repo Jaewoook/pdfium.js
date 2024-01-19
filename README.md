@@ -33,23 +33,15 @@ yarn add pdfium.js
 npm install --save pdfium.js
 ```
 
-### WebAssembly Preparation
-
-> [!IMPORTANT]  
-> This step is required to use this library. Make sure to copy the bundled `pdfium.wasm` file to your static assets directory before using it.
-
-```bash
-cp ./node_modules/pdfium.js/dist/pdfium.wasm <YOUR_STATIC_ASSETS_DIRECTORY>
-```
-
-or you can manually download the pdfium.wasm file [here](https://github.com/Jaewoook/pdfium.js/raw/main/src/libs/pdfium.wasm).
-
 ## Usage
+
+> [!NOTE]
+> When you call `PDFium()`, this library will load and instantiate PDFium binary in browser environment. If your project is using SSR, such as Next.js, it should not be loaded in server-side environment. `"use client";` directive might be required.
 
 ```ts
 import { PDFium } from "pdfium.js";
 
-PDFium({ wasmPath: "/" }).then((PDFiumModule) => {
+PDFium().then((PDFiumModule) => {
   // library initialization
   PDFiumModule._FPDF_InitLibrary();
 
@@ -74,10 +66,10 @@ PDFium().then((PDFiumModule) => {
   const bytes = 1024;
 
   // allocate 1024 bytes in memory
-  const memoryAddress = PDFiumModule.asm.malloc(bytes);
+  const memoryAddress = PDFiumModule.wasmExports.malloc(bytes);
 
   // free memory
-  PDFiumModule.asm.free(memoryAddress);
+  PDFiumModule.wasmExports.free(memoryAddress);
 });
 ```
 
@@ -88,6 +80,7 @@ This library doesn't provide full PDFium API yet. Check full version of defined 
 You can also find original API specification [here](https://pdfium.googlesource.com/pdfium/+/main/public/).
 
 ### Supported API List
+
 - _FPDF_InitLibrary
 - _FPDF_InitLibraryWithConfig
 - _FPDF_DestroyLibrary

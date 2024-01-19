@@ -1,7 +1,5 @@
-import PDFiumModule from "./libs/pdfium";
+import createPDFiumModule from "./libs/pdfium";
 import type { FPDF } from "./global";
-
-window.PDFiumModule = PDFiumModule;
 
 /**
  * Emscripten module options type definition
@@ -10,16 +8,14 @@ interface ModuleOptions {
   [key: string]: unknown;
   printErr: (message: string) => void;
   onAbort: () => void;
-  locateFile: (path: string, prefix: string) => string;
 }
 
-interface LibraryInitOptions {
-  wasmPath?: string;
+interface LibraryOptions {
   onError?: () => void;
   debug?: boolean;
 }
 
-const generateModuleWithOptions = (options: LibraryInitOptions): ModuleOptions => {
+const generateModule = (options: LibraryOptions): ModuleOptions => {
   return {
     printErr: (err: string) => {
       console.error("[PDFium Error]", err);
@@ -28,29 +24,25 @@ const generateModuleWithOptions = (options: LibraryInitOptions): ModuleOptions =
       console.error("Failed to load PDFium module.");
       options.onError?.();
     },
-    locateFile: (path, prefix) => {
-      return options.wasmPath + prefix + path;
-    },
   };
 };
 
 /**
- * Initialize PDFium with options.
+ * Create PDFium wasm module with options.
  *
- * `wasmPath` is required to load `.wasm` file as static asset.
- * `onWasmLoaded` is optional callback function that called when wasm load finished.
- * @param options library initialize options
+ * @param options module creation options
  */
-const initPDFium = (options: LibraryInitOptions) => {
-  const { onError, wasmPath = "/", debug = false } = options;
+const createPDFium = (options: LibraryOptions) => {
+  const { onError, debug = false } = options;
+
   return new Promise<FPDF>((resolve, reject) => {
     if (debug) {
-      console.log("[PDFium debug] initPDFium", options);
+      console.log("[PDFium debug] createPDFium", options);
     }
 
-    const Module = generateModuleWithOptions({ onError, wasmPath, debug });
+    const Module = generateModule({ onError, debug });
 
-    PDFiumModule(Module)
+    createPDFiumModule(Module)
       .then((FPDFModule) => {
         // register PDFium module to window
         window.FPDF = FPDFModule;
@@ -60,14 +52,14 @@ const initPDFium = (options: LibraryInitOptions) => {
   });
 };
 
-const PDFium = (options: LibraryInitOptions = {}) => {
+const PDFium = (options: LibraryOptions = {}) => {
   if (window.FPDF) {
     return Promise.resolve(window.FPDF);
   }
 
-  return initPDFium(options);
+  return createPDFium(options);
 };
 
 export * from "./constants";
-export { initPDFium, PDFium };
+export { createPDFium, FPDF, PDFium };
 export default PDFium;

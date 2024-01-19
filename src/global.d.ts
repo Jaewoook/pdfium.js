@@ -15,7 +15,7 @@ export interface FPDF extends ModuleOptions {
   HEAPU32: Uint32Array;
   HEAPF32: Float32Array;
   HEAPF64: Float64Array;
-  asm: {
+  wasmExports: {
     [key: string]: any;
     malloc: (size: number) => number;
     free: (address: number) => number;
