@@ -56,17 +56,27 @@ PDFium().then((PDFiumModule) => {
 });
 ```
 
-### Memory Management
+### WASM Memory Management
+
+Here is simple code snippets about memory management.
+
+The WASM Memory can be found in `PDFiumModule.FPDF.HEAP*` properties.
 
 ```ts
-import { PDFium } from "pdfium.js";
+import { PDFium, memory } from "pdfium.js";
 
 // options parameter can be skipped after the module loaded
 PDFium().then((PDFiumModule) => {
-  const bytes = 1024;
+  const nBytes = 1024;
 
-  // allocate 1024 bytes in memory
-  const memoryAddress = PDFiumModule.wasmExports.malloc(bytes);
+  // allocate 1024 bytes in wasm memory
+  const memoryAddress = PDFiumModule.wasmExports.malloc(nBytes);
+
+  // you can also use calloc() to allocate 1024 bytes (array of 256 integers)
+  const memoryAddress2 = memory.calloc(256, 4);
+
+  // zero-fill allocated memory
+  memory.fill(PDFiumModule.FPDF.HEAPU8, memoryAddress, nBytes);
 
   // free memory
   PDFiumModule.wasmExports.free(memoryAddress);
