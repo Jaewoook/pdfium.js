@@ -1,8 +1,9 @@
 import createPDFiumModule from "./libs/pdfium";
 import type { FPDF } from "./global";
+import * as memory from "./memory";
 
 /**
- * Emscripten module options type definition
+ * Emscripten module options type definition.
  */
 interface ModuleOptions {
   [key: string]: unknown;
@@ -61,5 +62,5 @@ const PDFium = (options: LibraryOptions = {}) => {
 };
 
 export * from "./constants";
-export { createPDFium, FPDF, PDFium };
+export { createPDFium, FPDF, PDFium, memory };
 export default PDFium;

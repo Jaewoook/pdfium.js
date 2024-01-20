@@ -1,6 +1,6 @@
 {
   "name": "pdfium.js",
-  "version": "0.2.0-rc.1",
+  "version": "0.2.1-rc.1",
   "description": "A PDFium wrapper library for browser-side JavaScript",
   "main": "./dist/cjs/index.js",
   "types": "./dist/esm/index.d.ts",
