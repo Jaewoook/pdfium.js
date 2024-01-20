@@ -1,6 +1,11 @@
 # PDFium.js Changelog
 
-## v0.2.0 (2024-01-19)
+## v0.2.1-rc.1 (2024-01-20)
+
+- Add memory util functions
+  - added functions: `fill`, `getData`, `calloc`
+
+## v0.2.0-rc.1 (2024-01-19)
 
 - Upgrade pdfium WebAssembly binary version to 6183
 - Embed wasm binary in loader file
