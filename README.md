@@ -48,7 +48,7 @@ PDFium().then((PDFiumModule) => {
   // memory allocation
   const byteArray: Uint8Array = <FILE BINARY DATA>;
   const fileSize = byteArray.length;
-  const binaryAddress = PDFiumModule.asm.malloc(fileSize);
+  const binaryAddress = PDFiumModule.wasmExports.malloc(fileSize);
   PDFiumModule.HEAPU8.set(byteArray, binaryAddress);
 
   // document loading
