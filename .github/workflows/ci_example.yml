@@ -1,8 +1,12 @@
-name: "PDFium.js:CI"
+name: "Example:CI"
 
 on:
   push:
   pull_request:
+
+defaults:
+  run:
+    working-directory: example
 
 jobs:
   build:
@@ -11,8 +15,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          cache: "yarn"
-          node-version-file: ".tool-versions"
+          cache-dependency-path: "yarn.lock"
+          node-version-file: "../.tool-versions"
       - run: yarn install --frozen-lockfile
       - run: yarn build
   lint:
@@ -21,7 +25,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          cache: "yarn"
-          node-version-file: ".tool-versions"
+          cache-dependency-path: "yarn.lock"
+          node-version-file: "../.tool-versions"
       - run: yarn install --frozen-lockfile
       - run: yarn lint
