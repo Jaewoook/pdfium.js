@@ -1,0 +1,29 @@
+name: "Example:CI"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache-dependency-path: "example/yarn.lock"
+          node-version-file: ".tool-versions"
+      - run: cd example
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache-dependency-path: "example/yarn.lock"
+          node-version-file: ".tool-versions"
+      - run: cd example
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint

@@ -1,6 +1,49 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 1.25em 0.5em;
+}
+
+p {
+  margin: 0;
+}
+
+header > h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+#content {
+  display: flex;
+}
+
+aside {
+  padding: 1em 0.5em;
+}
+
+asdie button {
+  margin: 0.5em;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+div.api-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75em;
+}
+
+canvas {
+  background: #e0e0e0;
 }

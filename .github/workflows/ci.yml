@@ -1,4 +1,4 @@
-name: "CI"
+name: "PDFium.js:CI"
 
 on:
   push:

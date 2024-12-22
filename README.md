@@ -33,6 +33,12 @@ yarn add pdfium.js
 npm install --save pdfium.js
 ```
 
+## Example project
+
+Check out this example project. The implemantion of renderer may helpful to achieve what you do.
+
+![example project](./images/example_project.png)
+
 ## Usage
 
 > [!NOTE]
@@ -48,7 +54,7 @@ PDFium().then((PDFiumModule) => {
   // memory allocation
   const byteArray: Uint8Array = <FILE BINARY DATA>;
   const fileSize = byteArray.length;
-  const binaryAddress = PDFiumModule.asm.malloc(fileSize);
+  const binaryAddress = PDFiumModule.wasmExports.malloc(fileSize);
   PDFiumModule.HEAPU8.set(byteArray, binaryAddress);
 
   // document loading

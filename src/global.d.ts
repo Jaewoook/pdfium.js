@@ -39,7 +39,12 @@ export interface FPDF extends ModuleOptions {
   _FPDF_GetPageHeight: (pagePtr: number) => number;
   _FPDF_GetPageWidthF: (pagePtr: number) => number;
   _FPDF_GetPageHeightF: (pagePtr: number) => number;
-  _FPDF_GetPageSizeByIndex: (documentPtr: number, pageIndex: number, width: number, height: number) => number;
+  _FPDF_GetPageSizeByIndex: (
+    documentPtr: number,
+    pageIndex: number,
+    width: number,
+    height: number
+  ) => number;
   _FPDF_ClosePage: (pagePtr: number) => void;
   // Page Object
   _FPDFPage_CountObjects: (pagePtr: number) => number;
@@ -53,7 +58,13 @@ export interface FPDF extends ModuleOptions {
   _FPDFText_ClosePage: (textPagePtr: number) => void;
   // Bitmap
   _FPDFBitmap_Create: (width: number, height: number, alpha: number) => number;
-  _FPDFBitmap_CreateEx: (width: number, height: number, format: number, firstScan: number, stride: number) => number;
+  _FPDFBitmap_CreateEx: (
+    width: number,
+    height: number,
+    format: number,
+    firstScan: number,
+    stride: number
+  ) => number;
   _FPDFBitmap_FillRect: (
     bitmapPtr: number,
     left: number,
