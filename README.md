@@ -35,7 +35,7 @@ npm install --save pdfium.js
 
 ## Example project
 
-Check out this example project. The implemantion of renderer may helpful to achieve what you do.
+Check out this [example project](./example/). The implemantion of renderer may helpful to achieve what you do.
 
 ![example project](./images/example_project.png)
 
