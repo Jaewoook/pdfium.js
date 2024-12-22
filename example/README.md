@@ -1,8 +1,9 @@
 # PDFium.js Example Project
 
 This is an example project that utilizes `PDFium.js`. This project is built using Vite.
-By defaukt, this project downloads and installs the latest `PDFium.js` from npm,
-but you can change the version if you need.
+This project will download and install the latest version of `PDFium.js` from npm.
+
+[Live demo](https://pdfium-js-example.vercel.app/) is also available.
 
 ## How to run
 
